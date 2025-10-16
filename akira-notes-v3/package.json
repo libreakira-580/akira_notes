@@ -1,0 +1,57 @@
+{
+  "name": "akira-notes",
+  "version": "1.2.0",
+  "description": "Akira Notes - Electron + React Markdown note app (in-app menu, no encryption)",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm:watch:renderer\" \"npm:watch:main\" \"wait-on http://localhost:3000 && electron .\"",
+    "watch:renderer": "cd renderer && npm run start",
+    "watch:main": "nodemon --watch main --exec \"electron .\"",
+    "build": "electron-builder"
+  },
+  "author": "libreakira-580",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.0",
+    "concurrently": "^8.0.0",
+    "wait-on": "^7.0.0",
+    "nodemon": "^3.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^8.1.0",
+    "fuse.js": "^6.6.2",
+    "marked": "^6.0.0",
+    "electron-store": "^8.1.0"
+  },
+  "build": {
+    "appId": "com.libreakira.akira-notes",
+    "productName": "Akira Notes",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/libreakira-580/akira-notes.git"
+  }
+}
